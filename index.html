@@ -1,0 +1,1131 @@
+        <!DOCTYPE html>
+        <html lang="en" ng-app="Homework8">
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <title>Congress API</title>
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="styles.css">
+            <script data-require="angular.js@1.3.0" data-semver="1.3.0" src="https://code.angularjs.org/1.3.0/angular.js"></script>
+        </head>
+        <body>
+
+        <div class="wrapper container-fluid">
+         <div class="row row-fixed-top">
+               <div class="col-md-5 col-xs-2">
+                   <a href="" id="menu-toggle" class="glyphicon glyphicon-align-justify btn-menu toggle"></a>
+               </div>
+               <div class="col-md-1 col-xs-3">
+                   <span style="float: none; margin: 0 auto display:inline-block vertical-align:middle;">
+                   <a href="http://sunlightfoundation.com/" target="_blank"><img class="imageHeight" src="http://cs-server.usc.edu:45678/hw/hw8/images/logo.png"></a></span>
+               </div>
+               <div class="col-md-6 col-xs-6">
+                   <p class="headerClass">Congress API</p>
+               </div>
+          </div>
+
+        <div class="box">
+            <div class="row row-offcanvas wrapperSlider row-offcanvas-left">
+
+                <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+
+                    <ul class="nav hidden-xs" id="lg-menu">
+                        <li class="active"><a href="" id="legislators"><i class="fa fa-user"></i> &nbsp;&nbsp;Legislators</a></li>
+                        <li><a href="" id="bills"><i class="fa fa-file-o"></i> &nbsp;&nbsp;Bills</a></li>
+                        <li><a href="" id="committees"><i class="fa fa-sign-in"></i> &nbsp;&nbsp;Committees</a></li>
+                        <li><a href="" id="favorites"><i class="fa fa-star"></i> &nbsp;&nbsp;Favorites</a></li>
+                    </ul>
+
+                    <ul class="nav visible-xs" id="xs-menu">
+                        <li><a href="" id="legislatorsmob" class="text-center"><i class="fa fa-user"></i></a></li>
+                        <li><a href="" id="billsmob" class="text-center"><i class="fa fa-file-o"></i></a></li>
+                        <li><a href="" id="committeesmob" class="text-center"><i class="fa fa-sign-in"></i></a></li>
+                        <li><a href="" id="favoritesmob" class="text-center"><i class="fa fa-star"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="column col-sm-10 col-xs-11" id="main" style="padding-left:0px;">
+                  <div id="pageTitle1"><h3 class="contentClass">Legislators</h3></div><hr>
+                    <div class="full col-sm-9">
+
+                    <div class="row">
+                    <div class="col-sm-12">
+                      <div id="mainLeg">
+                        <div id="myCarousel" class="container-fluid carousel slide carousel-inner" data-interval="false" role="listbox">
+                          <div class="item active" id="carTab1">
+
+
+                              <div id="legislatorsTab" class="panel with-nav-tabs panel-default">
+
+                                 <ul class="nav nav-tabs" role="tablist">
+                                    <li class="nav-item active">
+                                      <a href="" id="state" class="nav-link active" data-toggle="tab" role="tab">
+                                      By State </a>
+                                    </li>
+                                    <li class="nav-item"><a href="" id="house" class="nav-link" data-toggle="tab" role="tab" data-toggle="tab">House</a></li>
+                                    <li class="nav-item"><a href="" id="senate" role="tab" data-toggle="tab">Senate</a></li>
+                                </ul>
+
+                                 <div class="panel-body">
+                                <div class="tab-pane active" id="state1" role="tabpanel" ng-controller="legislatorsCtrl">
+                                    <b><p class="list-group-item" id="adjust"><span class="adjLeg">Legislators By State</span>
+                                    <select class="statesFilter" ng-model="catFilter" >
+                                    <option selected value="">All States</option>
+                                    <option>Alabama</option>
+                                    <option>Alaska</option>
+                                    <option>Arizona</option>
+                                    <option>Arkansas</option>
+                                    <option>California</option>
+                                    <option>Colorado</option>
+                                    <option>Connecticut</option>
+                                    <option>Delaware</option>
+                                    <option>Florida</option>
+                                    <option>Georgia</option>
+                                    <option>Hawaii</option>
+                                    <option>Idaho</option>
+                                    <option>Illinois</option>
+                                    <option>Indiana</option>
+                                    <option>Iowa</option>
+                                    <option>Kansas</option>
+                                    <option>Kentucky</option>
+                                    <option>Louisiana</option>
+                                    <option>Maine</option>
+                                    <option>Maryland</option>
+                                    <option>Massachusetts</option>
+                                    <option>Michigan</option>
+                                    <option>Minnesota</option>
+                                    <option>Mississippi</option>
+                                    <option>Missouri</option>
+                                    <option>Montana</option>
+                                    <option>Nebraska</option>
+                                    <option>Nevada</option>
+                                    <option>New Hampshire</option>
+                                    <option>New Jersey</option>
+                                    <option>New Mexico</option>
+                                    <option>New York</option>
+                                    <option>North Carolina</option>
+                                    <option>North Dakota</option>
+                                    <option>Ohio</option>
+                                    <option>Oklahoma</option>
+                                    <option>Oregon</option>
+                                    <option>Pennsylvania</option>
+                                    <option>Rhode Island</option>
+                                    <option>South Carolina</option>
+                                    <option>South Dakota</option>
+                                    <option>Tennessee</option>
+                                    <option>Texas</option>
+                                    <option>Utah</option>
+                                    <option>Vermont</option>
+                                    <option>Virginia</option>
+                                    <option>Washington</option>
+                                    <option>West Virginia</option>
+                                    <option>Wisconsin</option>
+                                    <option>Wyoming</option>
+                                  </select></p></b>
+                                    
+                                  <div class="list-group">
+                                  <table class="table table-hover">
+                                      <thead>
+                                        <tr>
+                                          <th>Party</th>
+                                          <th>Name</th>
+                                          <th>Chamber</th>
+                                          <th>District</th>
+                                          <th>State</th>
+                                          <th></th>
+                                        </tr>
+                                      </thead>
+                                    <tbody>
+
+                                    <tr dir-paginate="detail in legislatorsByState | orderBy:['state_name','last_name'] | filter: catFilter | itemsPerPage:10" pagination-id="last_name">
+
+                                      <td><img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.party | lowercase}}.png"></td>
+                                      <td>{{detail.last_name + ", " + detail.first_name}}</td>
+                                      <td style="text-transform:capitalize;">
+                                          <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                                          {{detail.chamber}}
+                                      </td>
+                                      <td>{{detail.district == null ? "N.A" :"District " + detail.district}}</td>
+                                      <td>{{detail.state_name}}</td>
+                                      <td>
+                                          <a class="right" href="#myCarousel" id="right" role="button" data-slide="next">
+                                              <button ng-click="viewDetails(detail);" type="button" class="btn btn-primary">View Details</button>
+                                          </a>
+                                      </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+
+                                <center>
+                                    <dir-pagination-controls max-size="10" boundary-links="true" direction-links="true" pagination-id="last_name"></dir-pagination-controls>
+                                </center>
+                            </div>
+
+                            <div class="tab-pane" style="display:none;" ng-controller="houseCtrl" id="house1" role="tabpanel">
+                                <b><p class="list-group-item" id="adjust"><span class="adjLeg">Legislators By House</span>
+                                  <input type="text" class="statesFilter" placeholder="Search" ng-model="search"></p></b>
+                                <div class="list-group">
+                                  <table class="table table-hover">
+                                      <thead>
+                                        <tr>
+                                          <th>Party</th>
+                                          <th>Name</th>
+                                          <th>Chamber</th>
+                                          <th>District</th>
+                                          <th>State</th>
+                                          <th></th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+
+                                        <tr dir-paginate="detail in legislatorsByHouse | orderBy:['last_name'] | filter: search | itemsPerPage:10" pagination-id="state_name">
+
+                                          <td><img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.party | lowercase}}.png"></td>
+                                          <td>{{detail.last_name + ", " + detail.first_name}}</td>
+                                          <td style="text-transform:capitalize;">
+                                              <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                                              {{detail.chamber}}
+                                              </td>
+                                          <td>{{detail.district == null ? "N.A" :"District " + detail.district}}</td>
+                                          <td>{{detail.state_name}}</td>
+                                          <td><a class="right" href="#myCarousel" id="right" role="button" data-slide="next">
+                                              <button ng-click="viewDetails(detail);" type="button" class="btn btn-primary">View Details</button>
+                                          </a></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                <center>
+                                    <dir-pagination-controls max-size="10" boundary-links="true" direction-links="true" pagination-id="state_name"></dir-pagination-controls>
+                                </center>
+                            </div>
+
+                            <div class="tab-pane active" style="display:none;" id="senate1" role="tabpanel" ng-controller="senateCtrl">
+                                <b><p class="list-group-item" id="adjust"><span class="adjLeg">Legislators By Senate</span>
+                                  <input type="text" class="statesFilter" placeholder="Search" ng-model="search"></p></b>
+                                <div class="list-group">
+                                  <table class="table table-hover">
+                                      <thead>
+                                        <tr>
+                                          <th>Party</th>
+                                          <th>Name</th>
+                                          <th>Chamber</th>
+                                          <th>State</th>
+                                          <th></th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+
+                                        <tr dir-paginate="detail in legislatorsBySenate | orderBy:['last_name'] | filter: search | itemsPerPage:10" pagination-id="district">
+
+                                          <td><img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.party | lowercase}}.png"></td>
+                                          <td>{{detail.last_name + ", " + detail.first_name}}</td>
+                                          <td style="text-transform:capitalize;">
+                                              <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                                              {{detail.chamber}}
+                                              </td>
+
+                                          <td>{{detail.state_name}}</td>
+                                          <td><a class="right" href="#myCarousel" id="right" role="button" data-slide="next">
+                                              <button ng-click="viewDetails(detail);" type="button" class="btn btn-primary">View Details</button>
+                                          </a>
+                                          </td>
+
+                                        </tr> 
+
+                                      </tbody>
+                                    </table>
+
+                                  </div>
+                                <center>
+                                    <dir-pagination-controls max-size="10" boundary-links="true" direction-links="true" pagination-id="district"></dir-pagination-controls>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+
+
+                <div class="item" id="detailsCarousal">
+                 <div id="viewDetails" class="panel panel-default">
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <div>
+
+                        <a href="#myCarousel" id="left" data-slide="prev">    
+                            <button type="button" class="btn btn-default btn-sm">
+                              <span id="back" class="glyphicon glyphicon-chevron-left"></span>
+                            </button>
+                        </a>
+
+                        <span class="detailsText">Details </span>
+                        <button type="button" ng-click = "addLegislatorFavorite(currentDetail);" class="btn btn-default pos">
+                            <span id="star" ><i style="color : {{currentDetail.color}}" class="fa fa-star" aria-hidden="true"></i></span>
+                        </button> </div>
+                    </ul>
+
+
+                <div class="container-fluid" id="view">
+                    <div class="row">
+                        <div class="col-md-6">
+                          <div>
+                            <hr style="border-width:0px">
+                            <div>
+
+                            <!-- Mobile Tab panes -->
+                            <table id="detailsTable" class="table table-hover desktop">
+                                
+                            <tbody>
+                                <tr>
+                                  <td>
+                                    <img alt="" class="senatePic" src='https://theunitedstates.io/images/congress/original/{{currentDetail.bioguide_id + ".jpg"}}'>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="ng-binding">
+                                    {{currentDetail.title + ". " + currentDetail.last_name + ", " + currentDetail.first_name}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="ng-binding">
+                                    <a style="color : #337ab7" href="mailto:{{currentDetail.oc_email}}" target="_top">{{currentDetail.oc_email}}</a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Chamber: {{currentDetail.chamber}}
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="ng-binding">
+                                    Contact: <a href="tel:{{currentDetail.phone}}" style="color : #337ab7">{{currentDetail.phone}}</a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="ng-binding" style="text-transform:capitalize;">
+                                    <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{currentDetail.party | lowercase}}.png">
+                                     {{currentDetail.party == 'R' ? 'Republic' : 'Democrat'}}
+                                  </td>
+                                 </tr>
+                                    <tr>
+                                      <td class="ng-binding">
+                                        {{start | date : "MMM dd, yyyy"}}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="ng-binding">
+                                        {{end | date : "MMM dd, yyyy"}}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="ng-binding">
+                                        {{currentDetail.office}}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td class="ng-binding">
+                                        {{currentDetail.state_name}}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                       <td ng-if="currentDetail.fax != null">
+                                            <a style="color : #337ab7" href='fax:{{currentDetail.fax}}' target='_blank'>{{currentDetail.fax}}</a>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr>
+                                      <td class="ng-binding">
+                                        {{currentDetail.birthday | date : "MMM dd, yyyy"}}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                          <a target="_blank" href="https://www.twitter.com/{{currentDetail.twitter_id}}"><img height="30px" src="http://cs-server.usc.edu:45678/hw/hw8/images/t.png"></a>  <a target="_blank" href="https://www.facebook.com/{{currentDetail.facebook_id}}"><img height="30px" src="http://cs-server.usc.edu:45678/hw/hw8/images/f.png"></a> <a target="_blank" href="{{currentDetail.website}}"><img height="30px" src="http://cs-server.usc.edu:45678/hw/hw8/images/w.png"></a>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+                                <div class="col-md-6 desktop">
+                                  <div>
+                                    <div>
+                                      <h3>Committees</h3>
+                                      <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th style="padding-right:0px;">
+                                                Chamber
+                                            </th>
+                                            <th style="padding-right:0px;">
+                                                Committee ID
+                                            </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="com in topFiveCommittees">
+                                                <td style="text-transform:capitalize;">
+                                                    {{com.chamber}}
+                                                </td>
+                                                <td>
+                                                    {{com.committee_id}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                    <div>
+                                      <h3>Bills</h3>
+                                      <table class="table">
+                                        <thead>
+                                          <tr>
+                                            <th style="padding-right:0px;">
+                                            Bill ID
+                                        </th>
+                                        <th style="padding-right:0px;">
+                                            Link
+                                        </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="bill in topFiveBills">
+                                                <td>
+                                                    {{bill.bill_id | uppercase}}
+                                                </td>
+                                                <td ng-if="bill.last_version.urls.pdf != null">
+                                                    <a href='{{bill.last_version.urls.pdf}}' style='color : #337ab7' target='_blank'>Link</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <table id="detailsTable" class="table table-hover hidden-xs">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 45%;" rowspan="5">
+                                                <img alt="" class="senatePic" src='https://theunitedstates.io/images/congress/original/{{currentDetail.bioguide_id + ".jpg"}}'>
+                                            </td>
+                                            <td style="width: 55%;">
+                                                {{currentDetail.title + ". " + currentDetail.last_name + ", " + currentDetail.first_name}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 55%;">
+                                                <a style="color : #337ab7" href="mailto:{{currentDetail.oc_email}}" target="_top">{{currentDetail.oc_email}}</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 55%;">
+                                                Chamber: {{currentDetail.chamber}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 55%;">
+                                                Contact: <a href="tel:{{currentDetail.phone}}" style="color : #337ab7">{{currentDetail.phone}}</a>
+                                            </td>
+                                        </tr>
+                                        <tr>   
+                                            <td style="width: 55%; text-transform:capitalize;">  
+                                              <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{currentDetail.party | lowercase}}.png">
+                                              {{currentDetail.party == 'R' ? 'Republic' : 'Democrat'}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Start Term</b>
+                                            </td>
+                                            <td>
+                                                {{start | date : "MMM dd, yyyy"}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>End Term</b>
+                                            </td>
+                                            <td>
+                                                {{end | date : "MMM dd, yyyy"}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Term</b>
+                                            </td>
+                                            <td>
+                                                <uib-progressbar animate="false" value="dynamic" type="success"><b>{{dynamic}}%</b></uib-progressbar>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Office</b>
+                                            </td>
+                                            <td>
+                                                {{currentDetail.office}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>State</b>
+                                            </td>
+                                            <td>
+                                                {{currentDetail.state_name}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Fax</b>
+                                            </td>
+                                            <td ng-if="currentDetail.fax != null">
+                                                <a style="color : #337ab7" href='fax:{{currentDetail.fax}}' target='_blank'>{{currentDetail.fax}}</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Birthday</b>
+                                            </td>
+                                            <td>
+                                                {{currentDetail.birthday | date : "MMM dd, yyyy"}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>Social Links</b>
+                                            </td>
+                                            <td>
+                                                <a target="_blank" href="https://www.twitter.com/{{currentDetail.twitter_id}}"><img height="30px" src="http://cs-server.usc.edu:45678/hw/hw8/images/t.png"></a>  <a target="_blank" href="https://www.facebook.com/{{currentDetail.facebook_id}}"><img height="30px" src="http://cs-server.usc.edu:45678/hw/hw8/images/f.png"></a> <a target="_blank" href="{{currentDetail.website}}"><img height="30px" src="http://cs-server.usc.edu:45678/hw/hw8/images/w.png"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 hidden-xs">
+                     <div>
+                        <div>
+                            <h3>Committees</h3>
+                            <table id="detailsTable" class="table ">
+                                <thead>
+                                <tr>
+                                    <th style="padding-right:0px;">
+                                        Chamber
+                                    </th>
+                                    <th style="padding-right:0px;">
+                                        Committee ID
+                                    </th>
+                                    <th style="padding-right:0px;">
+                                        Name
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="com in topFiveCommittees">
+                                    <td style="text-transform:capitalize;">
+                                        {{com.chamber}}
+                                    </td>
+                                    <td>
+                                        {{com.committee_id}}
+                                    </td>
+                                    <td>
+                                        {{com.name}}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                        <h3>Bills</h3>
+                        <table id="detailsTable" class="table">
+                            <thead>
+                                <tr>
+                                    <th style="padding-right:0px;">
+                                        Bill ID
+                                    </th>
+                                    <th style="padding-right:0px;">
+                                        Title
+                                    </th>
+                                    <th style="padding-right:0px;">
+                                        Chamber
+                                    </th>
+                                    <th style="padding-right:0px;">
+                                        Bill Type
+                                    </th>
+                                    <th style="padding-right:0px;">
+                                        Congress
+                                    </th>
+                                    <th style="padding-right:0px;">
+                                        Link
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="bill in topFiveBills">
+                                    <td>
+                                        {{bill.bill_id | uppercase}}
+                                    </td>
+                                    <td>
+                                        {{bill.official_title}}
+                                    </td>
+                                    <td style="text-transform:capitalize;">
+                                        {{bill.chamber}}
+                                    </td>
+                                    <td>
+                                        {{bill.bill_type | uppercase}}
+                                    </td>
+                                    <td>
+                                        {{bill.congress}}
+                                    </td>
+                                    <td ng-if="bill.last_version.urls.pdf != null">
+                                        <a href='{{bill.last_version.urls.pdf}}' style='color : #337ab7' target='_blank'>Link</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+               </div>
+              </div>
+            </div>
+          </div>
+        </div>            
+      </div>
+        <!-- bills tab -->
+        <div id="mainBill" style="display:none;">
+            <div id="myCarousel2" class="container-fluid carousel slide carousel-inner"  data-interval="false" role="listbox">
+            <div class="item active" id="billTab1">
+                <div id="billsTab" class="panel with-nav-tabs panel-default" >
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item active"><a href="" id="active" class="nav-link active" data-toggle="tab" role="tab">
+                            Active Bills </a></li>
+                        <li class="nav-item"><a href="" id="new" class="nav-link" data-toggle="tab" role="tab" data-toggle="tab">New Bills</a></li>
+                    </ul>
+
+                    <div class="panel-body">
+                        <div class="tab-pane active" id="bills1" role="tabpanel" ng-controller="activeBillsCtrl">
+                            <b><p id="adjust" class="list-group-item"><span class="adjLeg">Active Bills</span>
+                              <input type="text" class="statesFilter" placeholder="Search" ng-model="search"></p></b>
+                            <div class="list-group">
+                              <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th style="width:100px; padding-right:0px;">Bill ID</th>
+                                      <th style="width:100px; padding-right:0px;">Bill Type</th>
+                                      <th style="width:100px; padding-right:0px;">Title</th>
+                                      <th style="width:100px; padding-right:0px;">Chamber</th>
+                                      <th style="width:100px; padding-right:0px;">Introduced On</th>
+                                      <th style="width:100px; padding-right:0px;">Sponsor</th>
+                                      <th style="width:100px; padding-right:0px;"></th>
+                                    </tr>
+                                  </thead>
+                                <tbody>
+
+                                <tr dir-paginate="detail in legislatorsByBills | filter: search | itemsPerPage:10" pagination-id="bills">
+
+                                  <td>{{detail.bill_id | uppercase}}</td>
+                                  <td>{{detail.bill_type | uppercase}}</td>
+                                  <td>{{detail.official_title}}</td>
+                                  <td style="text-transform:capitalize;">
+                                          <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                                          {{detail.chamber}}
+                                  </td>
+                                  <td>{{detail.introduced_on}}</td>
+                                  <td>{{detail.sponsor.title + ". " + detail.sponsor.last_name + ", " + detail.sponsor.first_name}}</td>
+                                  <td>
+                                      <a class="right1" href="#myCarousel2" id="right1" role="button" data-slide="next">
+                                          <button ng-click="viewBillDetail(detail);" type="button" class="btn btn-primary">View Details</button>
+                                      </a> 
+                                  </td>                     
+                                </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                            <center>
+                                <dir-pagination-controls max-size="10" boundary-links="true" direction-links="true" pagination-id="bills"></dir-pagination-controls>
+                            </center>
+                        </div>
+
+                        <div class="tab-pane" style="display:none;" ng-controller="newBillsCtrl" id="bills2" role="tabpanel">
+                            <b><p id="adjust" class="list-group-item"><span class="adjLeg">New Bills</span>
+                              <input type="text" class="statesFilter" placeholder="Search" ng-model="search"></p></b>
+                            <div class="list-group">
+                              <table class="table table-hover">
+                                  <thead>
+                                    <tr>
+                                      <th style="width:90px; padding-right:0px;">Bill ID</th>
+                                      <th style="width:90px; padding-right:0px;">Bill Type</th>
+                                      <th style="width:90px; padding-right:0px;">Title</th>
+                                      <th style="width:90px; padding-right:0px;">Chamber</th>
+                                      <th style="width:90px; padding-right:0px;">Introduced On</th>
+                                      <th style="width:90px; padding-right:0px;">Sponsor</th>
+                                      <th style="width:90px; padding-right:0px;"></th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+
+                                    <tr dir-paginate="detail in legislatorsByNewBills | filter: search | itemsPerPage:10" pagination-id="newBills">
+
+                                      <td>{{detail.bill_id | uppercase}}</td>
+                                      <td>{{detail.bill_type | uppercase}}</td>
+                                      <td>{{detail.official_title}}</td>
+                                      <td style="text-transform:capitalize;">
+                                              <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                                              {{detail.chamber}}
+                                      </td>
+                                      <td>{{detail.introduced_on}}</td>
+                                      <td>{{detail.sponsor.title + ". " + detail.sponsor.last_name + ", " + detail.sponsor.first_name}}</td>
+                                      <td>
+                                        <a class="right1" href="#myCarousel2" id="right1" role="button" data-slide="next">
+                                          <button ng-click="viewBillDetail(detail);" type="button" class="btn btn-primary">View Details</button>
+                                        </a>  
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            <center>
+                                <dir-pagination-controls max-size="10" boundary-links="true" direction-links="true" pagination-id="newBills"></dir-pagination-controls>
+                            </center>
+                           </div>
+                        </div>
+                 </div>
+            </div>
+
+            <!-- View Bills Details -->  
+
+            <div class="item" id="billsDetailsCarousal">
+               <div id="viewBillDetails" class="panel panel-default">
+                 <ul class="nav nav-tabs" role="tablist">
+                    <div>
+                        <a href="#myCarousel2" id="billsleft" data-slide="prev">    
+                            <button type="button" class="btn btn-default btn-sm">
+                              <span id="billback" class="glyphicon glyphicon-chevron-left"></span>
+                            </button>
+                        </a>
+                        <span class="detailsText">Details </span>
+                        <button ng-click="addBillFavorite(currentBillDetail);" type="button" class="btn btn-default pos">
+                            <span id="billstar" ><i style="color : {{currentBillDetail.color}}" class="fa fa-star" aria-hidden="true"></i></span>
+                        </button>
+                    </div>
+                 </ul>
+
+                <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                      <div>
+                        <hr style="border-width:0px">
+                        <div>
+                            <table id="detailsTable" class="table">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 30%;">
+                                            <b>Bill ID</b>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            {{currentBillDetail.bill_id | uppercase}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%;">
+                                            <b>Title</b>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            {{currentBillDetail.official_title}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%;">
+                                            <b>Bill Type</b>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            {{currentBillDetail.bill_type | uppercase}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%;">
+                                            <b>Sponsor</b>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            {{currentBillDetail.sponsor.title + ". " + currentBillDetail.sponsor.last_name + ", " + currentBillDetail.sponsor.first_name}}
+                                        </td>
+                                    </tr>
+                                    <tr>   
+                                        <td style="width: 30%;">
+                                            <b>Chamber</b>
+                                        </td>
+                                        <td style="width: 70%; text-transform:capitalize;">  
+                                            {{currentBillDetail.chamber}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%;">
+                                            <b>Status</b>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            {{currentBillDetail.history.active == false ? 'New' : 'Active'}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%;">
+                                            <b>Introduced On</b>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            {{introducedOn | date : "MMM dd, yyyy"}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%;">
+                                           <b> Congress URL</b>
+                                        </td>
+                                        <td style="width: 70%;" ng-if="currentBillDetail.urls.congress != null">
+                                            <a style='color:#337ab7' href='{{currentBillDetail.urls.congress}}' target='_blank'>URL</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%;">
+                                            <b>Version Status</b>
+                                        </td>
+                                        <td style="width: 70%;">
+                                            {{currentBillDetail.last_version.version_name}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 30%;">
+                                            <b>Bill URL</b>
+                                        </td>
+
+                                        <td ng-if="currentBillDetail.last_version.urls.pdf != null" style="width: 70%;">
+                                            <a style='color:#337ab7' href='{{currentBillDetail.last_version.urls.pdf}}' target='_blank'>Link</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6" id="mobilepdf">
+
+                <object width="450" height="500" data="{{currentBillDetail.last_version.urls.pdf}}">
+                </object>
+
+                  </div>
+                   </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- Committees Tab -->
+
+        <div class="container-fluid">
+         <div id="committeesTab" style="display:none" class="panel with-nav-tabs panel-default">
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item active"><a href="" id="comhouse" class="nav-link active" data-toggle="tab" role="tab">
+                    House </a></li>
+                <li class="nav-item"><a href="" id="comsenate" class="nav-link" data-toggle="tab" role="tab" data-toggle="tab">Senate</a></li>
+                <li class="nav-item"><a href="" id="joint" role="tab" data-toggle="tab">Joint</a></li>
+            </ul>
+
+         <div class="panel-body">
+            <div class="tab-pane active" id="comhouse1" role="tabpanel" ng-controller="comHouseCtrl">
+                <b><p id="adjust" class="list-group-item"><span class="adjLeg">House</span>
+                  <input type="text" class="statesFilter1" placeholder="Search" ng-model="search"></p></b>
+                <div class="list-group">
+                  <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th style="padding-right:50px;"></th>
+                          <th style="padding-right:50px;">Chamber</th>
+                          <th style="padding-right:50px;">Committee ID</th>
+                          <th style="padding-right:50px;">Name</th>
+                          <th style="padding-right:50px;">Parent Committee</th>
+                          <th style="padding-right:50px;">Contact</th>
+                          <th style="padding-right:50px;">Office</th>
+                        </tr>
+                      </thead>
+                    <tbody>
+
+                    <tr dir-paginate="detail in legislatorsByComs | filter: search | orderBy : ['committee_id'] | itemsPerPage:10" pagination-id="committeesHouse">
+
+                      <td>
+                        <button id="starButton" ng-click="addToFav(detail);" type="button" class="btn btn-default">
+                          <span id="star"><i style="color: {{detail.color}}" class="fa fa-star"></i></span> 
+                        </button>
+                      </td>
+                      <td style="text-transform:capitalize;">
+                          <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                          {{detail.chamber}}
+                      </td>
+                      <td>{{detail.committee_id | uppercase}}</td>
+                      <td>{{detail.name}}</td>
+                      <td>{{detail.parent_committee_id == null ? "" : detail.parent_committee_id}}</td>
+                      <td>{{detail.phone}}</td>
+                      <td>{{detail.office == null ? "N.A." : detail.office | uppercase}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+                <center>
+                    <dir-pagination-controls max-size="10" boundary-links="true" direction-links="true" pagination-id="committeesHouse"></dir-pagination-controls>
+                </center>
+            </div>
+
+            <div class="tab-pane" style="display:none;" ng-controller="comSenateCtrl" id="comsenate1" role="tabpanel">
+                <b><p id="adjust" class="list-group-item"><span class="adjLeg">Senate</span>
+                  <input type="text" class="statesFilter1" placeholder="Search" ng-model="search"></p></b>
+                    <div class="list-group">
+                     <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>Chamber</th>
+                          <th>Committee ID</th>
+                          <th>Name</th>
+                          <th>Parent Committee</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        <tr dir-paginate="detail in legislatorsByComsSenate | filter: search | itemsPerPage:10" pagination-id="committeesSenate">
+
+                          <td>
+                          <button type="button" ng-click="addSenateComFavorite(detail);" class="btn btn-default">
+                              <span id="star" ><i style="color: {{detail.color}}" class="fa fa-star" ></i></span>  
+                          </button></td>
+                          <td style="text-transform:capitalize;">
+                              <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                              {{detail.chamber}}
+                          </td>
+                          <td>{{detail.committee_id | uppercase}}</td>
+                          <td>{{detail.name}}</td>
+                          <td>{{detail.parent_committee_id == null ? "" : detail.parent_committee_id}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                <center>
+                    <dir-pagination-controls max-size="10" boundary-links="true" direction-links="true" pagination-id="committeesSenate"></dir-pagination-controls>
+                </center>
+            </div>
+
+            <div class="tab-pane active" style="display:none;" id="comjoint1" role="tabpanel" ng-controller="comJointCtrl">
+                <b><p id="adjust" class="list-group-item"><span class="adjLeg">Joint</span>
+                <input type="text" class="statesFilter1" placeholder="Search" ng-model="search"></p></b>
+                <div class="list-group">
+                  <table class="table table-hover">
+                    <thead>
+                        <tr>
+                          <th></th>
+                          <th>Chamber</th>
+                          <th>Committee ID</th>
+                          <th>Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr dir-paginate="detail in legislatorsByComsJoint | filter: search | itemsPerPage:10" pagination-id="comsJoint">
+                      <td><button ng-click="addJointComFavorite(detail);" type="button" class="btn btn-default">
+                          <span id="star" ><i style="color: {{detail.color}}" class="fa fa-star" aria-hidden="true"></i></span>
+                       </button></td>
+                      <td style="text-transform:capitalize;">
+                          <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                          {{detail.chamber}}
+                      </td>
+                      <td>{{detail.committee_id | uppercase}}</td>
+                      <td>{{detail.name}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              <center>
+                <dir-pagination-controls max-size="10" boundary-links="true" direction-links="true" pagination-id="comsJoint"></dir-pagination-controls>
+              </center>
+          </div>
+        </div>
+        </div>
+        </div>
+
+        <!-- Favorites -->
+      <div id="favoritesTab" style="display:none">
+        <div class="container-fluid">
+            <div  class="panel with-nav-tabs panel-default">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item active"><a href="" id="legis" class="nav-link active" data-toggle="tab" role="tab">
+                    Legislators </a></li>
+                <li class="nav-item"><a href="" id="bil" class="nav-link" data-toggle="tab" role="tab" data-toggle="tab">Bills</a></li>
+                <li class="nav-item"><a href="" id="com" role="tab" data-toggle="tab">Committees</a></li>
+            </ul>
+
+             <div class="panel-body">
+
+                <div class="tab-pane active" id="favLegis" role="tabpanel" ng-controller="favLegisCtrl">
+                    <b><p class="list-group-item">Favorite Legislators
+                      </b>
+                    <div class="list-group">
+                      
+                      <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th style="padding-right:50px;"></th>
+                              <th style="padding-right:50px;">Image</th>
+                              <th style="padding-right:50px;">Party</th>
+                              <th style="padding-right:50px;">Name</th>
+                              <th style="padding-right:50px;">Chamber</th>
+                              <th style="padding-right:50px;">State</th>
+                              <th style="padding-right:50px;">Email</th>
+                              <th style="padding-right:50px;"></th>
+                            </tr>
+                          </thead>
+                        <tbody>
+
+                        <tr ng-repeat="detail in favsLegislators track by $index">
+                          <td>
+                            <button ng-click="removeLegFromFav(detail);" type="button" class="btn btn-default">
+                              <span id="star" ><i class="fa fa-trash-o" aria-hidden="true"></i></span> 
+                            </button>
+                          </td>
+
+                          <td><img alt="" width="40px" height="48px" src='https://theunitedstates.io/images/congress/original/{{detail.bioguide_id + ".jpg"}}'></td>    
+
+                          <td>
+                            <img height="25px" width="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.party | lowercase}}.png">
+                          </td>
+
+                          <td>{{detail.last_name + ", " + detail.first_name}}</td>    
+
+                          <td style="text-transform:capitalize;">
+                              <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                              {{detail.chamber}}
+                          </td>
+
+                          <td>{{detail.state_name}}</td>
+                          <td><a style="color : #337ab7" href="mailto:{{detail.oc_email}}" target="_top">{{detail.oc_email}}</a></td>
+                          <td>
+                            <a href="" class="favViewDetails" onclick="show();" role="button" data-slide="next">
+                                <button ng-click="viewDetails(detail);" type="button" class="btn btn-primary">View Details</button>
+                            </a>
+                           </td>
+                          </tr>
+                         </tbody>
+                       </table>
+                     </div>
+                   </div>
+
+                <div class="tab-pane active" style="display:none;" id="favBills" role="tabpanel" ng-controller="favBillCtrl">
+                    <b><p class="list-group-item">Favorite Bills
+                      </b>
+                    <div class="list-group">
+                      <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th style="padding-right:50px;"></th>
+                              <th style="padding-right:50px;">Bill ID</th>
+                              <th style="padding-right:50px;">Bill Type</th>
+                              <th style="padding-right:50px;">Title</th>
+                              <th style="padding-right:50px;">Chamber</th>
+                              <th style="padding-right:50px;">Introduced On</th>
+                              <th style="padding-right:50px;">Sponsor</th>
+                              <th style="padding-right:50px;"></th>
+                            </tr>
+                          </thead>
+                        <tbody>
+
+                        <tr ng-repeat="detail in favsAllBills track by $index">
+
+                          <td><button ng-click="removeBillFromFav(detail);" type="button" class="btn btn-default">
+                              <span id="star" ><i class="fa fa-trash-o" aria-hidden="true"></i></span> 
+                            </button>
+                          </td>
+                          <td>{{detail.bill_id | uppercase}}</td>
+                          <td>{{detail.bill_type | uppercase}}</td>
+                          <td>{{detail.official_title}}</td>
+                          <td style="text-transform:capitalize;">
+                              <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                              {{detail.chamber}}
+                          </td>
+                          <td>{{detail.introduced_on}}</td>
+                          <td>{{detail.sponsor.title + ". " + detail.sponsor.last_name + ", " + detail.sponsor.first_name}}</td>
+                          <td>
+                              <a href="" class="favBillViewDetails" onclick="showBillDetails();" role="button" data-slide="next">
+                                <button ng-click="viewBillDetail(detail);" type="button" class="btn btn-primary">View Details</button>
+                              </a>
+                          </td>    
+                         </tr>
+                        </tbody>
+                    </table>
+                   </div>
+                </div>
+
+                <div class="tab-pane active" style="display:none;" id="favComs" role="tabpanel" ng-controller="favComCtrl">
+                    <b><p class="list-group-item">Favorite Committees
+                      </b>
+                    <div class="list-group">
+                      <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th style="padding-right:50px;"></th>
+                              <th style="padding-right:50px;">Chamber</th>
+                              <th style="padding-right:50px;">Committee ID</th>
+                              <th style="padding-right:50px;">Name</th>
+                              <th style="padding-right:50px;">Parent Committee</th>
+                              <th style="padding-right:50px;">Sub Committee</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                            <tr ng-repeat="detail in favsCommittees track by $index">
+                              <td><button ng-click="removeComFromFav(detail);" type="button" class="btn btn-default">
+                                  <span id="star" ><i class="fa fa-trash-o" aria-hidden="true"></i></span> 
+                                </button>
+                              </td>
+                              <td style="text-transform:capitalize;">
+                                  <img height="25px" src="http://cs-server.usc.edu:45678/hw/hw8/images/{{detail.chamber=='house'? 'h.png': 's.svg'}}">
+                                  {{detail.chamber}}
+                              </td>
+                              <td>{{detail.committee_id | uppercase}}</td>
+                              <td>{{detail.name}}</td>
+                              <td>{{detail.parent_committee_id == null ? "" : detail.parent_committee_id}}</td>
+                              <td>{{detail.subcommittee}}</td>
+                            </tr>
+                       </tbody>
+                    </table>
+                   </div>
+                </div>
+              </div>
+            </div>
+        </div>
+     </div>
+        <div class="panel panel-default bottom">
+        <div class="panel-heading">
+          <div class="panel-body">
+              asasasasa we qwert ert dfghjytrewq asdre asdewq asd applications asas asd etre, 9weudj567e &amp; intuitive. ew asdtyui qw fgh asq rtyh asd typography, asbnm, tghyuir, iturye, ghjyt, ert navigation iuypo tyui yt65rt-uy65t nvmbjg asdg-ins 123 65etryf 123 gfhjtuyetr 875ythf. 3456 987rft 23 87564tyg 1234567890 456 1234567890, 1234567890, iut567, yrtghj uty..
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="dirPagination.js"></script>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+        <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.2.0.js"></script>
+
+        <script src="congscript.js"></script>
+
+        </body>
+        </html>
